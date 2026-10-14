@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ПР4 — Форма и хранение</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>Список задач</h1>
+    <p>Форма, валидация и сохранение в localStorage</p>
+  </header>
+
+  <main class="page-main">
+    <section class="form-section">
+      <h2 id="form-title">Добавление задачи</h2>
+      <form id="task-form" novalidate>
+        <div class="form-row">
+          <label for="task-id">Идентификатор</label>
+          <input id="task-id" name="id" type="number" min="1" step="1" required>
+          <p id="error-id" class="field-error"></p>
+        </div>
+        <div class="form-row">
+          <label for="task-title">Название</label>
+          <input id="task-title" name="title" type="text" maxlength="100" required>
+          <p id="error-title" class="field-error"></p>
+        </div>
+        <div class="form-row">
+          <label for="task-priority">Приоритет</label>
+          <select id="task-priority" name="priority">
+            <option value="low">Низкий</option>
+            <option value="medium" selected>Средний</option>
+            <option value="high">Высокий</option>
+          </select>
+          <p id="error-priority" class="field-error"></p>
+        </div>
+        <div class="form-actions">
+          <button type="submit">Добавить задачу</button>
+          <button type="button" id="cancel-edit" hidden>Отменить</button>
+          <button type="button" id="reset-storage">Сбросить данные</button>
+        </div>
+      </form>
+      <p id="status-message" class="status-message" aria-live="polite"></p>
+    </section>
+
+    <section id="task-summary" class="summary">
+      <div class="summary-item">
+        <span class="summary-label">Всего</span>
+        <span class="summary-value" data-stat="total">0</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Выполнено</span>
+        <span class="summary-value" data-stat="completed">0</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Осталось</span>
+        <span class="summary-value" data-stat="pending">0</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Прогресс</span>
+        <span class="summary-value" data-stat="progress">0.0%</span>
+      </div>
+      <div class="summary-item">
+        <span class="summary-label">Показано</span>
+        <span class="summary-value" data-stat="visible">0</span>
+      </div>
+    </section>
+
+    <section id="filters" class="filters">
+      <button type="button" data-filter="all" class="is-active" aria-pressed="true">Все</button>
+      <button type="button" data-filter="pending" aria-pressed="false">В работе</button>
+      <button type="button" data-filter="completed" aria-pressed="false">Выполненные</button>
+    </section>
+
+    <p id="operation-message" class="operation-message" aria-live="polite"></p>
+
+    <p id="empty-message" class="empty-message" hidden></p>
+
+    <ul id="task-list" class="task-list"></ul>
+  </main>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ПР4 — Эксперименты с формой и хранилищем</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>Эксперименты с формой и localStorage</h1>
+    <p>Открой DevTools → Console</p>
+  </header>
+
+  <main class="page-main">
+    <section class="form-section">
+      <h2>Форма</h2>
+      <form id="demo-form">
+        <div class="form-row">
+          <label for="demo-id">Идентификатор</label>
+          <input id="demo-id" name="id" type="number" required>
+        </div>
+        <div class="form-row">
+          <label for="demo-title">Название</label>
+          <input id="demo-title" name="title" type="text" required>
+        </div>
+        <div class="form-row">
+          <label for="demo-priority">Приоритет</label>
+          <select id="demo-priority" name="priority">
+            <option value="low">Низкий</option>
+            <option value="medium" selected>Средний</option>
+            <option value="high">Высокий</option>
+          </select>
+        </div>
+        <button type="submit">Отправить</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Действия с хранилищем</h2>
+      <button type="button" id="save-demo">Сохранить в localStorage</button>
+      <button type="button" id="read-demo">Прочитать</button>
+      <button type="button" id="break-demo">Записать повреждённый JSON</button>
+      <button type="button" id="clear-demo">Очистить</button>
+    </section>
+
+    <section>
+      <h2>Журнал</h2>
+      <pre id="log"></pre>
+    </section>
+  </main>
+
+  <script type="module" src="./forms-storage.js"></script>
+</body>
+</html>
